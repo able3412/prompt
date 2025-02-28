@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시대별 한국사 퀴즈</title>
+    
+    <!-- 폰트 링크는 head에 위치 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbit&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Orbit', sans-serif; /* 폰트 지정 */
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        .banner {
+            width: 100%; /* 화면의 전체 너비 */
+            height: 250px; /* 원하는 높이 값 설정 */
+            object-fit: cover; /* 이미지 비율 유지하면서 배너에 맞추기 */
+            margin-bottom: 20px;
+        }
+        .quiz {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head> 
+<body>
+
+    <!-- 배너 이미지 -->
+    <img src="배너.jpg" alt="퀴즈 배너" class="banner">
+
+    <h1>한국사 주관식 퀴즈</h1>
+    <div class="quiz">
+        <div class="question">
+            <img src="문무왕.jpg" alt="삼국통일 이미지">
+            <h2>1. 삼국통일을 완수한 왕은 누구일까요?</h2>
+            <input type="text" id="answer1">
+        </div>
+
+        <div class="question">
+            <img src="은병.jpg" alt="은병 이미지">
+            <h2>2. 고려의 화폐 중 하나로 고려의 땅을 본떠 만든 고액화폐는 무엇일까요?</h2>
+            <input type="text" id="answer2">
+        </div>
+
+        <div class="question">
+            <img src="삼전도의 굴욕.jpg" alt="삼전도의 굴욕 이미지">
+            <h2>3. 병자호란으로 인해 1637년 1월 조선의 인조는 청나라의 홍타이지에게 '삼배구고두'를 하며 항복 의식을 치렀습니다. 이 사건을 무엇이라 할까요?</h2>
+            <input type="text" id="answer3">
+        </div>
+        
+        <div class="question">
+            <img src="통리기무아문.jpg" alt="통리기무아문 이미지">
+            <h2>4. 조일수호조규(강화도조약)체결 이후, 조선 정부는 개화정책의 일환으로 1880년에 개화정책, 대외정책을 담당할 기구를 설치하였습니다. 이 기구의 명칭은 무엇일까요? </h2>
+            <input type="text" id="answer4">
+        </div>
+
+        <div class="question">
+            <img src="김좌진.jpg" alt="김좌진 이미지">
+            <h2>5. 배우 송일국의 외증조부이자 1920년 청산리 전투의 지휘관으로서 일본군을 상대로 크게 승리한 인물은 누구일까요?</h2>
+            <input type="text" id="answer5">
+        </div>
+
+        <div class="question">
+            <img src="6월 항쟁.jpg" alt="6월 항쟁 이미지">
+            <h2>6. 대한민국 현행 헌법의 출발점이 된 사건이며 대통령 직선제를 이끌어 낸 이 사건은 무엇일까요?</h2>
+            <input type="text" id="answer6">
+        </div>
+
+        <button onclick="checkAnswers()">퀴즈 확인</button>
+
+        <div id="result" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        function checkAnswers() {
+            let score = 0;
+            const answers = {
+                answer1: ['문무왕'],  // 복수 정답
+                answer2: ['은병', '활구'],     // 복수 정답
+                answer3: ['삼전도의 굴욕', '삼전도의 치욕'],
+                answer4: ['통리기무아문'],
+                answer5: ['김좌진'],
+                answer6: ['87년 6월 항쟁', '6월 민주 항쟁']
+            };
+
+            for (let question in answers) {
+                const userAnswer = document.getElementById(question).value.trim();
+                if (answers[question].includes(userAnswer)) {
+                    score++;
+
+                }
+            }
+
+            document.getElementById('result').innerText = `당신의 점수는: ${score} / ${Object.keys(answers).length}`;
+        }
+    </script>
+
+</body>
+</html>
